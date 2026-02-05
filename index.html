@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Impossible Guess Game</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: black;
+      color: white;
+      text-align: center;
+      padding-top: 40px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 18px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎯 Guess The Number</h1>
+<h2>🔥 IMPOSSIBLE LEVEL 🔥</h2>
+<p>1 se 100 ke beech number guess karo</p>
+<p>Attempts Left: <span id="att">5</span></p>
+
+<input type="number" id="num">
+<br>
+<button onclick="check()">Guess</button>
+
+<p id="msg"></p>
+
+<footer>
+  <small>Made by Arnav Singh</small>
+</footer>
+
+<script>
+let secret = Math.floor(Math.random()*100)+1;
+let attempts = 5;
+
+function check(){
+  let g = Number(document.getElementById("num").value);
+  let msg = document.getElementById("msg");
+
+  if(attempts<=0){
+    msg.innerHTML="❌ Game Over! Number was "+secret;
+    return;
+  }
+
+  attempts--;
+  document.getElementById("att").innerText=attempts;
+
+  if(g===secret){
+    msg.innerHTML="🎉 You Won!";
+  } else if(g>secret){
+    msg.innerHTML="⬇️ Too High";
+  } else {
+    msg.innerHTML="⬆️ Too Low";
+  }
+}
+</script>
+
+</body>
+</html>
